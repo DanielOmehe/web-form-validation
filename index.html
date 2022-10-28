@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Web Form Validation</title>
+      <link rel="stylesheet" href="style.css">
+</head>
+<body>
+      <div class="wrapper">
+            <h1 class="heading">Valiadting Web Forms</h1>
+            <form action="" id="form-field" class="form-field">
+                  <div class="input-field">
+                        <label for="first-name" class="label">First name</label>
+                        <input type="text" autocomplete="name" class="input" id="first-name">
+                        <div class="error"></div>
+                  </div>
+                  <div class="input-field">
+                        <label for="last-name" class="label">Last name</label>
+                        <input type="text" autocomplete="name" class="input" id="last-name">
+                        <div class="error"></div>
+                  </div>
+                  <div class="input-field">
+                        <label for="email" class="label">Email</label>
+                        <input type="email" autocomplete="email" class="input" id="email">
+                        <div class="error"></div>
+                  </div>
+                  <div class="input-field">
+                        <label for="password" class="label">Password</label>
+                        <input type="password" autocomplete="new-password" class="input" id="password">
+                        <div class="error"></div>
+                  </div>
+                  <div class="input-field">
+                        <label for="telephone" class="label">Telephone</label>
+                        <input type="tel" autocomplete="tel" class="input" id="telephone">
+                        <div class="error"></div>
+                  </div>
+                  <div class="input-field">
+                        <label for="bio" class="label">Bio</label>
+                        <input type="text" class="input" autocomplete="name" id="bio">
+                        <div class="error"></div>
+                  </div>
+                  <button type="submit" class="submit">Submit</button>
+            </form>
+      </div>
+      <script src="main.js"></script>
+</body>
+</html>
