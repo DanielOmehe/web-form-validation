@@ -1,3 +1,4 @@
+import { pattern } from "./pattern.mjs";
 const form = document.getElementById('form-field'),
 firstName = document.getElementById('first-name'),
 lastName = document.getElementById('last-name'),
@@ -18,10 +19,11 @@ form.addEventListener('submit', e => {
             phoneNumber.value = '';
             bio.value = '';
       }
+      console.log(isValidName(lastName.value));
 });
 
 function isValidName(string){
-      let pattern = /\w/gi;
+      let pattern = /^[A-Z]+(\w){2,}/;
 
       return pattern.test(string)
 }
@@ -45,39 +47,44 @@ const setSuccess = element => {
 }
 
 const isValidEmail = string => {
-      let pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      let pattern = /^([a-z]+)+[^\$\-\_ ]+(\d+)+@[(gmail|yahoo)]+\.(\w)/
 
       return pattern.test(string);
 }
 
 const isValidPassword = string => {
-      let pattern = /(^\w{1,}\d{1,}|(@|_|-)?[^/%\$])$/g;
+      let pattern = /^[(\w{6,}@\-)]/;
+
       return pattern.test(string)
 }
 
 const isValidPhoneNumber = number => {
-      let pattern = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/g;
+      let pattern = /^\(?([0-9]{3,})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/g;
+
       return pattern.test(number);
 }
 
-console.log(isValidPhoneNumber(09077304882))
+
 
 const isValidString = string => {
-      //let pattern = //g;
+      let pattern = /^([a-z]+)-_, $/g;
 
-      //return pattern.test(string)
+      return pattern.test(string)
 }
 
+console.log(isValidString('hello, its me'));
+console.log(isValidString('hello, i am Daniel'));
+console.log(isValidString('hello, i am a softWareengineer'));
 
 function validateForm(){
 
-      if(!isValidName(firstName.value) || firstName.value.length < 3) {
+      if(!isValidName(firstName.value)) {
             setError(firstName, 'First name must be alphanumeric and contain 3 - 16 characters');
       }else{
             setSuccess(firstName)
       }
 
-      if(!isValidName(lastName.validateForm) || lastName.value.length < 3){
+      if(!isValidName(lastName.value)){
             setError(lastName, 'Last name must be alphanumeric and contain 3 - 16 characters');
       }else{
             setSuccess(lastName)

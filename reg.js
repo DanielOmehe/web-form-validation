@@ -1,62 +1,70 @@
-let pattern = /abc/;
-
-console.log(pattern.test('abcaus'));
-
-let dateTime = /\d\d-\d\d-\d\d\d\d \d\d:\d\d/;
-
-dateTime = /[\d.]/
-
-console.log(dateTime.test('27-10-2022 04:16'));
-
-// dateTime = /[a-zA-Z]/;
-
-// console.log(dateTime.test('27-Oct-2022'));
-
-// let notBinary = /[^01]/;
-
-// console.log(notBinary.test('110011'))
-// console.log(notBinary.test('110222'))
-
-// pattern = /ou?r/;
-
-// console.log(pattern.test('color'));
-// console.log(pattern.test('colour'));
-// console.log(pattern.test('flavour'));
-// console.log(pattern.test('flavor'));
-
-// pattern = /boo+(hoo+)+/;
-
-// console.log(pattern.test('boohooboohooboohoo'));
-
-// pattern = /\d+/
-
-// let match = pattern.exec('one two 100');
-
-// console.log(match);
-
-// console.log(pattern.exec('one two 100'));
-
-pattern = /'([^']*)'/;
-console.log(pattern.exec("she said 'hello'"));
-
-let quotedText = /'([^']*)'/;
-console.log(quotedText.exec("she said hello"));
-
-console.log(/bad(ly)?/.exec("bad"));
-console.log(/bad(ly)/.exec("bad"));
-// → ["bad", undefined]
-console.log(/(\d)+/.exec("123"));
-
-function getDate(string){
-      let [_, month, day, year] = /(\d{1,2})-(\d{1,2})-(\d{4})/.exec(string);
-      console.log(month, day, year);
-      return new Date(year, month - 1, day);
+function isPattern(input){
+      return /^\d{3}-\d{3}-\d{4}$/.test(input)
 }
 
-console.log(getDate("1-30-2003"));
+console.log(isPattern('803-386-9078'));
 
-console.log(new Date());
+let refString = 'Hello world! hello there';
 
-pattern = /\b([01]+b|[\da-f]+h|\d+)\b/;
+let pattern = /Hello/gi;
 
-console.log(pattern.test('#1010b'));
+console.log(pattern.test(refString));
+
+console.log(refString.match(pattern));
+
+const regconst = new RegExp(`${pattern}`, 'gi');
+
+refString = 'xyz XYZ';
+
+console.log(refString.match(regconst));
+
+const regexPattern1 = /\bward/gi;
+
+const text1 = 'backward Wardrobe Ward';
+
+console.log(text1.match(regexPattern1)); // Output: ['Ward', 'Ward']
+
+// Syntax 2: /...\b/
+
+// Search for a word that ends with the pattern ward
+const regexPattern2 = /ward\b/gi;
+
+const text2 = 'backward Wardrobe Ward';
+
+console.log(text2.match(regexPattern2)); // Output: ['ward', 'Ward']
+
+// Syntax 3: /\b....\b/
+
+// Search for a stand-alone word that begins and end with the pattern ward
+const regexPattern3 = /\bward\b/gi;
+
+const text3 = 'backward Wardrobe Ward';
+
+console.log(text3.match(regexPattern3));
+
+const regexPattern = /ambi[eba]nce/;
+
+console.log(regexPattern.test('ambiance')); // Output: true
+
+console.log(regexPattern.test('ambience'));
+console.log(regexPattern.test('ambibnce'));
+
+function validEmail(email){
+      let pattern = /^[(\w\d\W)+]+@[yahoo|gmail]+\.[\w]+$/;
+
+      return pattern.test(email)
+}
+
+console.log(validEmail('omehedaniel232@gmail.com'));
+console.log(validEmail('omehedaniel232@yahoo.com'));
+console.log(validEmail('omehedaniel232$yahoo.com'));
+console.log(validEmail('omehedaniel232$yahoo,com'));
+console.log(validEmail('omehedaniel232@whatever.com'));
+
+const validURL = url => {
+      let pattern = /^[https?]+:\/\/((w{3}.)?[\w+]+)\.[\w+]+$/
+      return pattern.test(url)
+}
+
+console.log(validURL('www.fzmovies.net'));
+console.log(validURL('http://www.fzmovies.net'));
